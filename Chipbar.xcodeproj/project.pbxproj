@@ -11,6 +11,7 @@
 		2192042E02B241F02558B13D /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E47D0F5BAB7F4D56771EF /* SnapshotTests.swift */; };
 		59B41424DAAC222DD83021BB /* CPUReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ED668286A6A244BC0307 /* CPUReader.swift */; };
 		5C953BF20BC0AEE0360417FB /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808C3209B430586A9C9C820D /* Preferences.swift */; };
+		746A1752DFEB60F429599305 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE7BD7897FA26ABA6B16FC /* StatusBarView.swift */; };
 		968A26ED67C90D52589B8DD0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FBBE6E1A5934F6DEFA003C /* main.swift */; };
 		9C604E4048F94A6342323FE6 /* MetricsSamplerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1252F0ADB97518E28F73D9 /* MetricsSamplerTests.swift */; };
 		9C80E821BE23CAC3EB5BA6F1 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B9FAA1EB3360563E24303 /* Snapshot.swift */; };
@@ -38,6 +39,7 @@
 		703B98694D20082C94071847 /* RAMReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReader.swift; sourceTree = "<group>"; };
 		70BD0B2F7386A4F613290C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75574D91D270A8E018D7F3DC /* CPUReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUReaderTests.swift; sourceTree = "<group>"; };
+		7FFE7BD7897FA26ABA6B16FC /* StatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
 		808C3209B430586A9C9C820D /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		885AB74D769A6580C9CB0BE3 /* ChipbarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChipbarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1A5FEA442C87FC1E256BE6 /* GPUReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUReader.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				C2FAF793EAB08C1E8F95FC3B /* App */,
 				72DF4329710C2E439918690A /* Metrics */,
 				E9FEE0D156CC0FF8133F1E1E /* Preferences */,
+				D35191B7FB1E54D7D9350DAD /* UI */,
 			);
 			name = Chipbar;
 			path = Sources/Chipbar;
@@ -114,6 +117,14 @@
 				D4FBBE6E1A5934F6DEFA003C /* main.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		D35191B7FB1E54D7D9350DAD /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7FFE7BD7897FA26ABA6B16FC /* StatusBarView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		E9FEE0D156CC0FF8133F1E1E /* Preferences */ = {
@@ -211,6 +222,7 @@
 				5C953BF20BC0AEE0360417FB /* Preferences.swift in Sources */,
 				D83DCB6DD040114C79A60E89 /* RAMReader.swift in Sources */,
 				9C80E821BE23CAC3EB5BA6F1 /* Snapshot.swift in Sources */,
+				746A1752DFEB60F429599305 /* StatusBarView.swift in Sources */,
 				968A26ED67C90D52589B8DD0 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
