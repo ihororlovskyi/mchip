@@ -21,6 +21,7 @@
 		D05176FEACBF93B0E5310392 /* GPUReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1A5FEA442C87FC1E256BE6 /* GPUReader.swift */; };
 		D83DCB6DD040114C79A60E89 /* RAMReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B98694D20082C94071847 /* RAMReader.swift */; };
 		F443B263D4F3A88EF4D7F64A /* GPUReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618537069E4D80575115DFA /* GPUReaderTests.swift */; };
+		FE17ACD050B05DC37D160EFA /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC1D0B48CC9EADB2D8F1F4C /* StatusBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		2E24F0F3DD562D451FD2E854 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
+		3EC1D0B48CC9EADB2D8F1F4C /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		5D1252F0ADB97518E28F73D9 /* MetricsSamplerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsSamplerTests.swift; sourceTree = "<group>"; };
 		703B98694D20082C94071847 /* RAMReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReader.swift; sourceTree = "<group>"; };
 		70BD0B2F7386A4F613290C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		D35191B7FB1E54D7D9350DAD /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3EC1D0B48CC9EADB2D8F1F4C /* StatusBarController.swift */,
 				7FFE7BD7897FA26ABA6B16FC /* StatusBarView.swift */,
 			);
 			path = UI;
@@ -222,6 +225,7 @@
 				5C953BF20BC0AEE0360417FB /* Preferences.swift in Sources */,
 				D83DCB6DD040114C79A60E89 /* RAMReader.swift in Sources */,
 				9C80E821BE23CAC3EB5BA6F1 /* Snapshot.swift in Sources */,
+				FE17ACD050B05DC37D160EFA /* StatusBarController.swift in Sources */,
 				746A1752DFEB60F429599305 /* StatusBarView.swift in Sources */,
 				968A26ED67C90D52589B8DD0 /* main.swift in Sources */,
 			);
