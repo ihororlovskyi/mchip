@@ -21,8 +21,14 @@ final class GPUReader: GPUReading {
   private var previousTotal: Int64 = 0
   private var primed = false
 
-  init(bridge: IOReportBridgeProtocol = IOReportBridge()) {
+  init(bridge: IOReportBridgeProtocol) {
     self.bridge = bridge
+  }
+
+  /// Returns nil if the IOReport bridge cannot be initialised (e.g. headless CI runner).
+  convenience init?() {
+    guard let bridge = IOReportBridge() else { return nil }
+    self.init(bridge: bridge)
   }
 
   func sample() -> Double {
@@ -78,32 +84,39 @@ final class IOReportBridge: IOReportBridgeProtocol {
   private let channels: CFMutableDictionary
   private var lastSample: CFDictionary?
 
-  init() {
-    guard let h = dlopen("/usr/lib/libIOReport.dylib", RTLD_LAZY) else {
-      fatalError("chipbar: failed to dlopen /usr/lib/libIOReport.dylib")
-    }
+  init?() {
+    guard let h = dlopen("/usr/lib/libIOReport.dylib", RTLD_LAZY) else { return nil }
     handle = h
 
-    func sym<T>(_ name: String, _ type: T.Type) -> T {
-      guard let p = dlsym(h, name) else {
-        fatalError("chipbar: failed to dlsym \(name)")
-      }
+    func sym<T>(_ name: String, _ type: T.Type) -> T? {
+      guard let p = dlsym(h, name) else { return nil }
       return unsafeBitCast(p, to: type)
     }
 
-    copyChannels = sym("IOReportCopyChannelsInGroup", IOReportCopyChannelsInGroup_t.self)
-    createSubscription = sym("IOReportCreateSubscription", IOReportCreateSubscription_t.self)
-    createSamples = sym("IOReportCreateSamples", IOReportCreateSamples_t.self)
-    createDelta = sym("IOReportCreateSamplesDelta", IOReportCreateSamplesDelta_t.self)
+    guard
+      let cc = sym("IOReportCopyChannelsInGroup", IOReportCopyChannelsInGroup_t.self),
+      let cs = sym("IOReportCreateSubscription", IOReportCreateSubscription_t.self),
+      let csa = sym("IOReportCreateSamples", IOReportCreateSamples_t.self),
+      let cd = sym("IOReportCreateSamplesDelta", IOReportCreateSamplesDelta_t.self)
+    else {
+      dlclose(h)
+      return nil
+    }
+    copyChannels = cc
+    createSubscription = cs
+    createSamples = csa
+    createDelta = cd
 
     guard let chans = copyChannels("GPU Stats" as CFString, nil, 0, 0, 0)?.takeRetainedValue() else {
-      fatalError("chipbar: IOReportCopyChannelsInGroup returned nil for 'GPU Stats'")
+      dlclose(h)
+      return nil
     }
     channels = chans
 
     var sub: Unmanaged<CFMutableDictionary>? = nil
     guard let s = createSubscription(nil, chans, &sub, 0, nil)?.takeRetainedValue() else {
-      fatalError("chipbar: IOReportCreateSubscription failed")
+      dlclose(h)
+      return nil
     }
     subscription = s
   }
