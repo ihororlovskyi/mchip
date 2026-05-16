@@ -79,8 +79,8 @@ final class IOReportBridge: IOReportBridgeProtocol {
   private var lastSample: CFDictionary?
 
   init() {
-    guard let h = dlopen("/System/Library/PrivateFrameworks/IOReport.framework/IOReport", RTLD_LAZY) else {
-      fatalError("chipbar: failed to dlopen IOReport.framework")
+    guard let h = dlopen("/usr/lib/libIOReport.dylib", RTLD_LAZY) else {
+      fatalError("chipbar: failed to dlopen /usr/lib/libIOReport.dylib")
     }
     handle = h
 
