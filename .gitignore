@@ -1,2 +1,18 @@
 Thumbs.db
 .DS_Store
+
+/examples/
+
+/.agents/
+/.claude/
+skills-lock.json
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+.swiftpm/

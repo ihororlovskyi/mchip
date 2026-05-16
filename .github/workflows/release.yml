@@ -1,0 +1,69 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Tests
+        run: |
+          xcodebuild test \
+            -project Chipbar.xcodeproj \
+            -scheme Chipbar \
+            -destination 'platform=macOS,arch=arm64'
+
+      - name: Compute version
+        id: ver
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          echo "version=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Build release
+        id: build
+        run: |
+          ./scripts/build-release.sh "${{ steps.ver.outputs.version }}"
+          SHA=$(shasum -a 256 "build/Chipbar-${{ steps.ver.outputs.version }}.zip" | awk '{print $1}')
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ github.ref_name }}" \
+            "build/Chipbar-${{ steps.ver.outputs.version }}.zip" \
+            --generate-notes \
+            --title "Chip Bar ${{ github.ref_name }}"
+
+      - name: Checkout homebrew-tap
+        uses: actions/checkout@v4
+        with:
+          repository: ihororlovskyi/homebrew-tap
+          token: ${{ secrets.GH_TAP_PAT }}
+          path: homebrew-tap
+
+      - name: Update cask
+        run: |
+          ./scripts/update-cask.sh \
+            "${{ steps.ver.outputs.version }}" \
+            "${{ steps.build.outputs.sha }}" \
+            "homebrew-tap/Casks/chipbar.rb"
+
+      - name: Push tap update
+        working-directory: homebrew-tap
+        run: |
+          git config user.name  "chipbar-release-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add Casks/chipbar.rb
+          git commit -m "chipbar: ${{ steps.ver.outputs.version }}"
+          git push

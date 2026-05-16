@@ -1,0 +1,64 @@
+name: Chipbar
+
+options:
+  deploymentTarget:
+    macOS: "14.0"
+  bundleIdPrefix: com.ihororlovskyi
+  developmentLanguage: en
+
+targets:
+  Chipbar:
+    type: application
+    platform: macOS
+    sources:
+      - Sources/Chipbar
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ihororlovskyi.chipbar
+        MARKETING_VERSION: "0.0.0-dev"
+        CURRENT_PROJECT_VERSION: "0"
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        ARCHS: arm64
+        "EXCLUDED_ARCHS[sdk=*]": x86_64
+        SWIFT_VERSION: "5.0"
+        INFOPLIST_FILE: Sources/Chipbar/App/Info.plist
+        GENERATE_INFOPLIST_FILE: "NO"
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGNING_REQUIRED: "NO"
+        CODE_SIGNING_ALLOWED: "YES"
+        DEVELOPMENT_TEAM: ""
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+      configs:
+        debug:
+          ONLY_ACTIVE_ARCH: "YES"
+        release:
+          ONLY_ACTIVE_ARCH: "NO"
+
+  ChipbarTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - Tests/ChipbarTests
+    dependencies:
+      - target: Chipbar
+    settings:
+      base:
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        ARCHS: arm64
+        "EXCLUDED_ARCHS[sdk=*]": x86_64
+        SWIFT_VERSION: "5.0"
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGNING_REQUIRED: "NO"
+        CODE_SIGNING_ALLOWED: "YES"
+        DEVELOPMENT_TEAM: ""
+        GENERATE_INFOPLIST_FILE: "YES"
+
+schemes:
+  Chipbar:
+    build:
+      targets:
+        Chipbar: all
+    test:
+      targets:
+        - ChipbarTests
