@@ -12,9 +12,11 @@
 		59B41424DAAC222DD83021BB /* CPUReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ED668286A6A244BC0307 /* CPUReader.swift */; };
 		5C953BF20BC0AEE0360417FB /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808C3209B430586A9C9C820D /* Preferences.swift */; };
 		968A26ED67C90D52589B8DD0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FBBE6E1A5934F6DEFA003C /* main.swift */; };
+		9C604E4048F94A6342323FE6 /* MetricsSamplerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1252F0ADB97518E28F73D9 /* MetricsSamplerTests.swift */; };
 		9C80E821BE23CAC3EB5BA6F1 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B9FAA1EB3360563E24303 /* Snapshot.swift */; };
 		A93F356E090584B820D78E7B /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E24F0F3DD562D451FD2E854 /* PreferencesTests.swift */; };
 		ABF1EF2838468D8BC1EA1307 /* RAMReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74FE420E69EAA385D44D582 /* RAMReaderTests.swift */; };
+		C21D1B4A4257DADFC78C193A /* MetricsSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EF94D38FB1F95F3A0DF3 /* MetricsSampler.swift */; };
 		D05176FEACBF93B0E5310392 /* GPUReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1A5FEA442C87FC1E256BE6 /* GPUReader.swift */; };
 		D83DCB6DD040114C79A60E89 /* RAMReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B98694D20082C94071847 /* RAMReader.swift */; };
 		F443B263D4F3A88EF4D7F64A /* GPUReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618537069E4D80575115DFA /* GPUReaderTests.swift */; };
@@ -32,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		2E24F0F3DD562D451FD2E854 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
+		5D1252F0ADB97518E28F73D9 /* MetricsSamplerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsSamplerTests.swift; sourceTree = "<group>"; };
 		703B98694D20082C94071847 /* RAMReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReader.swift; sourceTree = "<group>"; };
 		70BD0B2F7386A4F613290C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75574D91D270A8E018D7F3DC /* CPUReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUReaderTests.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		D4FBBE6E1A5934F6DEFA003C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D618537069E4D80575115DFA /* GPUReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUReaderTests.swift; sourceTree = "<group>"; };
 		E76CE16A9A6DC1A9B6F74A38 /* Chipbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chipbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5C8EF94D38FB1F95F3A0DF3 /* MetricsSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsSampler.swift; sourceTree = "<group>"; };
 		F74FE420E69EAA385D44D582 /* RAMReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +57,7 @@
 			children = (
 				75574D91D270A8E018D7F3DC /* CPUReaderTests.swift */,
 				D618537069E4D80575115DFA /* GPUReaderTests.swift */,
+				5D1252F0ADB97518E28F73D9 /* MetricsSamplerTests.swift */,
 				2E24F0F3DD562D451FD2E854 /* PreferencesTests.swift */,
 				F74FE420E69EAA385D44D582 /* RAMReaderTests.swift */,
 				CD4E47D0F5BAB7F4D56771EF /* SnapshotTests.swift */,
@@ -86,6 +91,7 @@
 			children = (
 				CEF1ED668286A6A244BC0307 /* CPUReader.swift */,
 				AB1A5FEA442C87FC1E256BE6 /* GPUReader.swift */,
+				F5C8EF94D38FB1F95F3A0DF3 /* MetricsSampler.swift */,
 				703B98694D20082C94071847 /* RAMReader.swift */,
 				BD4B9FAA1EB3360563E24303 /* Snapshot.swift */,
 			);
@@ -201,6 +207,7 @@
 			files = (
 				59B41424DAAC222DD83021BB /* CPUReader.swift in Sources */,
 				D05176FEACBF93B0E5310392 /* GPUReader.swift in Sources */,
+				C21D1B4A4257DADFC78C193A /* MetricsSampler.swift in Sources */,
 				5C953BF20BC0AEE0360417FB /* Preferences.swift in Sources */,
 				D83DCB6DD040114C79A60E89 /* RAMReader.swift in Sources */,
 				9C80E821BE23CAC3EB5BA6F1 /* Snapshot.swift in Sources */,
@@ -214,6 +221,7 @@
 			files = (
 				0BBA208A785FD2921184C49C /* CPUReaderTests.swift in Sources */,
 				F443B263D4F3A88EF4D7F64A /* GPUReaderTests.swift in Sources */,
+				9C604E4048F94A6342323FE6 /* MetricsSamplerTests.swift in Sources */,
 				A93F356E090584B820D78E7B /* PreferencesTests.swift in Sources */,
 				ABF1EF2838468D8BC1EA1307 /* RAMReaderTests.swift in Sources */,
 				2192042E02B241F02558B13D /* SnapshotTests.swift in Sources */,
