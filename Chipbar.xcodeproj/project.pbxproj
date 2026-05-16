@@ -15,7 +15,9 @@
 		9C80E821BE23CAC3EB5BA6F1 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B9FAA1EB3360563E24303 /* Snapshot.swift */; };
 		A93F356E090584B820D78E7B /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E24F0F3DD562D451FD2E854 /* PreferencesTests.swift */; };
 		ABF1EF2838468D8BC1EA1307 /* RAMReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74FE420E69EAA385D44D582 /* RAMReaderTests.swift */; };
+		D05176FEACBF93B0E5310392 /* GPUReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1A5FEA442C87FC1E256BE6 /* GPUReader.swift */; };
 		D83DCB6DD040114C79A60E89 /* RAMReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B98694D20082C94071847 /* RAMReader.swift */; };
+		F443B263D4F3A88EF4D7F64A /* GPUReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618537069E4D80575115DFA /* GPUReaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +37,12 @@
 		75574D91D270A8E018D7F3DC /* CPUReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUReaderTests.swift; sourceTree = "<group>"; };
 		808C3209B430586A9C9C820D /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		885AB74D769A6580C9CB0BE3 /* ChipbarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChipbarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB1A5FEA442C87FC1E256BE6 /* GPUReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUReader.swift; sourceTree = "<group>"; };
 		BD4B9FAA1EB3360563E24303 /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 		CD4E47D0F5BAB7F4D56771EF /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		CEF1ED668286A6A244BC0307 /* CPUReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUReader.swift; sourceTree = "<group>"; };
 		D4FBBE6E1A5934F6DEFA003C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D618537069E4D80575115DFA /* GPUReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUReaderTests.swift; sourceTree = "<group>"; };
 		E76CE16A9A6DC1A9B6F74A38 /* Chipbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chipbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74FE420E69EAA385D44D582 /* RAMReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				75574D91D270A8E018D7F3DC /* CPUReaderTests.swift */,
+				D618537069E4D80575115DFA /* GPUReaderTests.swift */,
 				2E24F0F3DD562D451FD2E854 /* PreferencesTests.swift */,
 				F74FE420E69EAA385D44D582 /* RAMReaderTests.swift */,
 				CD4E47D0F5BAB7F4D56771EF /* SnapshotTests.swift */,
@@ -80,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				CEF1ED668286A6A244BC0307 /* CPUReader.swift */,
+				AB1A5FEA442C87FC1E256BE6 /* GPUReader.swift */,
 				703B98694D20082C94071847 /* RAMReader.swift */,
 				BD4B9FAA1EB3360563E24303 /* Snapshot.swift */,
 			);
@@ -194,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59B41424DAAC222DD83021BB /* CPUReader.swift in Sources */,
+				D05176FEACBF93B0E5310392 /* GPUReader.swift in Sources */,
 				5C953BF20BC0AEE0360417FB /* Preferences.swift in Sources */,
 				D83DCB6DD040114C79A60E89 /* RAMReader.swift in Sources */,
 				9C80E821BE23CAC3EB5BA6F1 /* Snapshot.swift in Sources */,
@@ -206,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BBA208A785FD2921184C49C /* CPUReaderTests.swift in Sources */,
+				F443B263D4F3A88EF4D7F64A /* GPUReaderTests.swift in Sources */,
 				A93F356E090584B820D78E7B /* PreferencesTests.swift in Sources */,
 				ABF1EF2838468D8BC1EA1307 /* RAMReaderTests.swift in Sources */,
 				2192042E02B241F02558B13D /* SnapshotTests.swift in Sources */,
