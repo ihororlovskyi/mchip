@@ -3,6 +3,8 @@ import Combine
 
 @MainActor
 final class StatusBarController {
+  static let repositoryURL = URL(string: "https://github.com/ihororlovskyi/chipbar")!
+
   private let statusItem: NSStatusItem
   private let view: StatusBarView
   private let menu: NSMenu
@@ -15,17 +17,20 @@ final class StatusBarController {
 
   init(preferences: Preferences) {
     self.preferences = preferences
-    self.statusItem = NSStatusBar.system.statusItem(withLength: StatusBarView.preferredWidth)
-    self.view = StatusBarView(frame: NSRect(x: 0, y: 0, width: StatusBarView.preferredWidth, height: NSStatusBar.system.thickness))
-    self.menu = NSMenu(title: "Chipbar")
+    let initialWidth = StatusBarView.width(for: preferences.metricVisibility)
+    self.statusItem = NSStatusBar.system.statusItem(withLength: initialWidth)
+    self.view = StatusBarView(frame: NSRect(x: 0, y: 0, width: initialWidth, height: NSStatusBar.system.thickness))
+    self.menu = NSMenu(title: "mchip")
 
     statusItem.button?.addSubview(view)
     view.frame = statusItem.button?.bounds ?? view.frame
     view.autoresizingMask = [.width, .height]
+    view.update(visibility: preferences.metricVisibility)
 
     buildMenu()
     statusItem.menu = menu
     refreshIntervalChecks()
+    refreshVisibilityChecks()
   }
 
   func update(with snapshot: Snapshot) {
@@ -40,10 +45,24 @@ final class StatusBarController {
     twoSecondsItem.state = preferences.refreshIntervalSeconds == 2 ? .on : .off
   }
 
+  func refreshVisibilityChecks() {
+    let visibility = preferences.metricVisibility
+    cpuItem.state = visibility.cpu ? .on : .off
+    gpuItem.state = visibility.gpu ? .on : .off
+    ramItem.state = visibility.ram ? .on : .off
+    view.update(visibility: visibility)
+    let width = StatusBarView.width(for: visibility)
+    statusItem.length = width
+    view.frame = statusItem.button?.bounds ?? NSRect(x: 0, y: 0, width: width, height: NSStatusBar.system.thickness)
+  }
+
   private func buildMenu() {
-    cpuItem.isEnabled = false
-    gpuItem.isEnabled = false
-    ramItem.isEnabled = false
+    cpuItem.target = self
+    cpuItem.action = #selector(toggleCPU)
+    gpuItem.target = self
+    gpuItem.action = #selector(toggleGPU)
+    ramItem.target = self
+    ramItem.action = #selector(toggleRAM)
 
     menu.addItem(cpuItem)
     menu.addItem(gpuItem)
@@ -61,9 +80,67 @@ final class StatusBarController {
     updateEvery.submenu = submenu
     menu.addItem(updateEvery)
 
+    let about = NSMenuItem(title: "About", action: nil, keyEquivalent: "")
+    about.submenu = makeAboutSubmenu()
+    menu.addItem(about)
+
     menu.addItem(.separator())
-    menu.addItem(NSMenuItem(title: "Quit Chip Bar", action: #selector(quit), keyEquivalent: "q"))
-    menu.items.last?.target = self
+    let quit = NSMenuItem(title: "Quit mchip", action: #selector(quitApp), keyEquivalent: "q")
+    quit.target = self
+    menu.addItem(quit)
+  }
+
+  private func makeAboutSubmenu() -> NSMenu {
+    let submenu = NSMenu(title: "About")
+
+    let nameItem = NSMenuItem(title: "mchip", action: nil, keyEquivalent: "")
+    nameItem.isEnabled = false
+    submenu.addItem(nameItem)
+
+    let versionItem = NSMenuItem(title: "v\(Self.appVersion)", action: nil, keyEquivalent: "")
+    versionItem.isEnabled = false
+    submenu.addItem(versionItem)
+
+    let dateItem = NSMenuItem(title: Self.buildDateString, action: nil, keyEquivalent: "")
+    dateItem.isEnabled = false
+    submenu.addItem(dateItem)
+
+    let github = NSMenuItem(title: "GitHub", action: #selector(openRepository), keyEquivalent: "")
+    github.target = self
+    submenu.addItem(github)
+
+    return submenu
+  }
+
+  private static var appVersion: String {
+    (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "0.0.0"
+  }
+
+  private static var buildDateString: String {
+    let url = Bundle.main.executableURL ?? Bundle.main.bundleURL
+    let attrs = try? FileManager.default.attributesOfItem(atPath: url.path)
+    let date = (attrs?[.modificationDate] as? Date) ?? Date()
+    let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "en_US_POSIX")
+    formatter.dateFormat = "dd MMM yy"
+    return formatter.string(from: date)
+  }
+
+  @objc private func openRepository() {
+    NSWorkspace.shared.open(Self.repositoryURL)
+  }
+
+  @objc private func toggleCPU() { toggle(.cpu, item: cpuItem) }
+  @objc private func toggleGPU() { toggle(.gpu, item: gpuItem) }
+  @objc private func toggleRAM() { toggle(.ram, item: ramItem) }
+
+  private func toggle(_ metric: Preferences.Metric, item: NSMenuItem) {
+    let nextVisible = item.state != .on
+    if preferences.setMetricVisible(metric, nextVisible) {
+      refreshVisibilityChecks()
+    } else {
+      NSSound.beep()
+    }
   }
 
   @objc private func selectOneSecond() {
@@ -76,7 +153,7 @@ final class StatusBarController {
     refreshIntervalChecks()
   }
 
-  @objc private func quit() {
+  @objc private func quitApp() {
     NSApp.terminate(nil)
   }
 

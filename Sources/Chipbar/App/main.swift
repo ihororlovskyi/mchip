@@ -11,10 +11,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
   private var cancellables: Set<AnyCancellable> = []
 
   func applicationDidFinishLaunching(_ notification: Notification) {
-    let gpu: GPUReading = GPUReader() ?? MockGPUReader(samples: { 0.0 })
     sampler = MetricsSampler(
       cpu: CPUReader(),
-      gpu: gpu,
+      gpu: GPUReader(),
       ram: RAMReader(),
       initialInterval: preferences.refreshIntervalSeconds
     )

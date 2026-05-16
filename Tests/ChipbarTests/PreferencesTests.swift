@@ -59,4 +59,37 @@ final class PreferencesTests: XCTestCase {
     wait(for: [exp], timeout: 1.0)
     XCTAssertEqual(received, [2])
   }
+
+  func test_metricVisibilityDefaultsToAllOn() {
+    let prefs = Preferences(defaults: defaults)
+    XCTAssertEqual(prefs.metricVisibility, .allOn)
+  }
+
+  func test_metricVisibilityRoundTrip() {
+    let prefs = Preferences(defaults: defaults)
+    XCTAssertTrue(prefs.setMetricVisible(.gpu, false))
+    XCTAssertEqual(prefs.metricVisibility.gpu, false)
+    XCTAssertEqual(prefs.metricVisibility.cpu, true)
+    XCTAssertEqual(prefs.metricVisibility.ram, true)
+
+    let prefs2 = Preferences(defaults: defaults)
+    XCTAssertEqual(prefs2.metricVisibility.gpu, false)
+    XCTAssertEqual(prefs2.metricVisibility.cpu, true)
+    XCTAssertEqual(prefs2.metricVisibility.ram, true)
+  }
+
+  func test_cannotHideLastVisibleMetric() {
+    let prefs = Preferences(defaults: defaults)
+    XCTAssertTrue(prefs.setMetricVisible(.gpu, false))
+    XCTAssertTrue(prefs.setMetricVisible(.ram, false))
+    XCTAssertFalse(prefs.setMetricVisible(.cpu, false))
+    XCTAssertEqual(prefs.metricVisibility.cpu, true)
+  }
+
+  func test_visibilityFallsBackWhenStoredStateIsAllOff() {
+    defaults.set(false, forKey: Preferences.showCPUKey)
+    defaults.set(false, forKey: Preferences.showGPUKey)
+    defaults.set(false, forKey: Preferences.showRAMKey)
+    XCTAssertEqual(Preferences(defaults: defaults).metricVisibility, .allOn)
+  }
 }
