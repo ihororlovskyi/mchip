@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/img/mchip-logo.jpg" alt="mchip" width="640">
+</p>
+
 # mchip
 
 mchip - is a tiny macos monitor of apple silicon chip process
@@ -7,7 +11,10 @@ mchip - is a tiny macos monitor of apple silicon chip process
 CPU  GPU  RAM
  4%  20%  25%
 ```
-Screenshot here (comming soon)
+
+<p align="center">
+  <img src="assets/img/mchip-screenshot-1.jpg" alt="mchip menu bar screenshot" width="512">
+</p>
 
 ## Install
 
@@ -20,6 +27,19 @@ Or you can download the latest release manually:
 1. Download and extract the zip file from the latest GitHub release.
 2. Drag the file called `mchip-v<version>.app` into your computer’s Applications folder.
 3. Within the Applications folder, right-click the app, then select “Open” from the menu that pops up.
+
+## Update
+
+```zsh
+brew update
+brew upgrade --cask mchip
+```
+
+## Uninstall
+
+```zsh
+brew uninstall --cask mchip
+```
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes and [ROADMAP.md](ROADMAP.md) for upcoming work.
 
