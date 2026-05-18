@@ -7,6 +7,7 @@ struct MetricVisibility: Equatable, Sendable {
   var ram: Bool
 
   static let allOn = MetricVisibility(cpu: true, gpu: true, ram: true)
+  static let defaults = MetricVisibility(cpu: true, gpu: true, ram: false)
 
   var visibleCount: Int {
     (cpu ? 1 : 0) + (gpu ? 1 : 0) + (ram ? 1 : 0)
@@ -39,12 +40,12 @@ final class Preferences {
     self.intervalSubject = CurrentValueSubject(initialInterval)
 
     let initialVisibility = MetricVisibility(
-      cpu: Self.loadFlag(defaults: defaults, key: Self.showCPUKey),
-      gpu: Self.loadFlag(defaults: defaults, key: Self.showGPUKey),
-      ram: Self.loadFlag(defaults: defaults, key: Self.showRAMKey)
+      cpu: Self.loadFlag(defaults: defaults, key: Self.showCPUKey, default: MetricVisibility.defaults.cpu),
+      gpu: Self.loadFlag(defaults: defaults, key: Self.showGPUKey, default: MetricVisibility.defaults.gpu),
+      ram: Self.loadFlag(defaults: defaults, key: Self.showRAMKey, default: MetricVisibility.defaults.ram)
     )
     self.visibilitySubject = CurrentValueSubject(
-      initialVisibility.visibleCount == 0 ? .allOn : initialVisibility
+      initialVisibility.visibleCount == 0 ? .defaults : initialVisibility
     )
   }
 
@@ -89,8 +90,8 @@ final class Preferences {
     case cpu, gpu, ram
   }
 
-  private static func loadFlag(defaults: UserDefaults, key: String) -> Bool {
-    if defaults.object(forKey: key) == nil { return true }
+  private static func loadFlag(defaults: UserDefaults, key: String, default fallback: Bool) -> Bool {
+    if defaults.object(forKey: key) == nil { return fallback }
     return defaults.bool(forKey: key)
   }
 }

@@ -11,12 +11,23 @@ _No unreleased changes._
 
 See [ROADMAP.md](ROADMAP.md) for planned work and explicit non-goals.
 
+## [0.1.2] — 2026-05-18
+
+### Changed
+
+- RAM cell is now hidden by default on fresh installs (`chipbar.show.ram` defaults to `false`). The menu-bar item ships as a two-cell `CPU` + `GPU` layout out of the box; users who already persisted a visibility value keep it. The all-off fallback also lands on CPU + GPU on, RAM off instead of re-enabling all three.
+- In-tree references to the GitHub repository slug updated from `ihororlovskyi/chipbar` to `ihororlovskyi/mchip` to match the repository rename: `About → GitHub` row (`StatusBarController.repositoryURL`) and `CHANGELOG.md` compare/release links. GitHub still serves the old URL via 301 redirect, but the in-tree links now point at the canonical location.
+- Homebrew cask renamed `chipbar` → `mchip` in [`ihororlovskyi/homebrew-tap`](https://github.com/ihororlovskyi/homebrew-tap) (`Casks/chipbar.rb` → `Casks/mchip.rb`; internal `cask`/`name`/`url`/`homepage` updated to the new slug). New install command is `brew install --cask mchip`; the cask `url` stanza now also sets `quarantine: false`, so future installs skip the Gatekeeper "Apple could not verify…" prompt on ad-hoc-signed builds. Users on the old cask: run `brew uninstall --cask chipbar && brew install --cask mchip` once to migrate.
+- Release workflow points at the renamed cask (`homebrew-tap/Casks/mchip.rb`, commit message `mchip: <version>`) and the GitHub release title is now `mchip <tag>` instead of `Chip Bar <tag>`.
+- The release `.app` bundle is now named `mchip-v<version>.app` (e.g. `mchip-v0.1.2.app`) instead of `Chipbar.app`. `CFBundleName` and `CFBundleDisplayName` resolve to the same string at build time via `mchip-v$(MARKETING_VERSION)`. `CFBundleIdentifier` stays `com.ihororlovskyi.chipbar`, so LaunchServices treats this as the same app and previously granted permissions are preserved. The cask now declares `app "mchip-v#{version}.app"`. Users on `brew install --cask mchip` will see the previous `/Applications/Chipbar.app` removed and `mchip-v0.1.2.app` installed in its place automatically on `brew upgrade`; manual installs need to drag the old `Chipbar.app` to Trash themselves. The Xcode target, scheme, and the binary inside the bundle (`Contents/MacOS/Chipbar`) are still called `Chipbar` — that rename is tracked for v0.1.3.
+- `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` bumped to `0.1.2`.
+
 ## [0.1.1] — 2026-05-16
 
 ### Added
 
 - Per-metric visibility toggles: `CPU` / `GPU` / `RAM` rows in the dropdown now act as checkboxes that hide or show the corresponding cell in the menu-bar item. Persisted as `chipbar.show.cpu` / `chipbar.show.gpu` / `chipbar.show.ram`. The last visible metric cannot be turned off; if all three are stored as `false`, the app falls back to showing all on next launch.
-- `About` submenu in the dropdown, listing the app name (`mchip`), version (`v<CFBundleShortVersionString>`), build date (executable `mtime`, formatted `dd MMM yy`), and a `GitHub` entry that opens the repository (`https://github.com/ihororlovskyi/chipbar`) in the default browser.
+- `About` submenu in the dropdown, listing the app name (`mchip`), version (`v<CFBundleShortVersionString>`), build date (executable `mtime`, formatted `dd MMM yy`), and a `GitHub` entry that opens the repository (`https://github.com/ihororlovskyi/mchip`) in the default browser.
 
 ### Changed
 
@@ -49,6 +60,7 @@ Initial release.
 - `scripts/update-cask.sh` — bumps `version` / `sha256` in the tap cask.
 - Homebrew tap at [`ihororlovskyi/homebrew-tap`](https://github.com/ihororlovskyi/homebrew-tap), installable via `brew install --cask chipbar`.
 
-[Unreleased]: https://github.com/ihororlovskyi/chipbar/compare/v0.1.1...HEAD
-[0.1.1]: https://github.com/ihororlovskyi/chipbar/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/ihororlovskyi/chipbar/releases/tag/v0.1.0
+[Unreleased]: https://github.com/ihororlovskyi/mchip/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/ihororlovskyi/mchip/compare/v0.1.1...v0.1.2
+[0.1.1]: https://github.com/ihororlovskyi/mchip/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/ihororlovskyi/mchip/releases/tag/v0.1.0

@@ -43,7 +43,7 @@ jobs:
           gh release create "${{ github.ref_name }}" \
             "build/Chipbar-${{ steps.ver.outputs.version }}.zip" \
             --generate-notes \
-            --title "Chip Bar ${{ github.ref_name }}"
+            --title "mchip ${{ github.ref_name }}"
 
       - name: Checkout homebrew-tap
         uses: actions/checkout@v4
@@ -57,13 +57,13 @@ jobs:
           ./scripts/update-cask.sh \
             "${{ steps.ver.outputs.version }}" \
             "${{ steps.build.outputs.sha }}" \
-            "homebrew-tap/Casks/chipbar.rb"
+            "homebrew-tap/Casks/mchip.rb"
 
       - name: Push tap update
         working-directory: homebrew-tap
         run: |
-          git config user.name  "chipbar-release-bot"
+          git config user.name  "mchip-release-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add Casks/chipbar.rb
-          git commit -m "chipbar: ${{ steps.ver.outputs.version }}"
+          git add Casks/mchip.rb
+          git commit -m "mchip: ${{ steps.ver.outputs.version }}"
           git push

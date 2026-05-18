@@ -60,13 +60,20 @@ final class PreferencesTests: XCTestCase {
     XCTAssertEqual(received, [2])
   }
 
-  func test_metricVisibilityDefaultsToAllOn() {
+  func test_metricVisibilityDefaultsHideRAM() {
     let prefs = Preferences(defaults: defaults)
-    XCTAssertEqual(prefs.metricVisibility, .allOn)
+    XCTAssertEqual(prefs.metricVisibility, .defaults)
+    XCTAssertEqual(prefs.metricVisibility, MetricVisibility(cpu: true, gpu: true, ram: false))
+  }
+
+  func test_existingRAMVisibilityIsPreserved() {
+    defaults.set(true, forKey: Preferences.showRAMKey)
+    XCTAssertTrue(Preferences(defaults: defaults).metricVisibility.ram)
   }
 
   func test_metricVisibilityRoundTrip() {
     let prefs = Preferences(defaults: defaults)
+    XCTAssertTrue(prefs.setMetricVisible(.ram, true))
     XCTAssertTrue(prefs.setMetricVisible(.gpu, false))
     XCTAssertEqual(prefs.metricVisibility.gpu, false)
     XCTAssertEqual(prefs.metricVisibility.cpu, true)
@@ -90,6 +97,6 @@ final class PreferencesTests: XCTestCase {
     defaults.set(false, forKey: Preferences.showCPUKey)
     defaults.set(false, forKey: Preferences.showGPUKey)
     defaults.set(false, forKey: Preferences.showRAMKey)
-    XCTAssertEqual(Preferences(defaults: defaults).metricVisibility, .allOn)
+    XCTAssertEqual(Preferences(defaults: defaults).metricVisibility, .defaults)
   }
 }

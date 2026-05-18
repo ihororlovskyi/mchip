@@ -3,7 +3,7 @@ import Combine
 
 @MainActor
 final class StatusBarController {
-  static let repositoryURL = URL(string: "https://github.com/ihororlovskyi/chipbar")!
+  static let repositoryURL = URL(string: "https://github.com/ihororlovskyi/mchip")!
 
   private let statusItem: NSStatusItem
   private let view: StatusBarView
