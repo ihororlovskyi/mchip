@@ -93,17 +93,21 @@ final class StatusBarController {
   private func makeAboutSubmenu() -> NSMenu {
     let submenu = NSMenu(title: "About")
 
-    let nameItem = NSMenuItem(title: "mchip", action: nil, keyEquivalent: "")
-    nameItem.isEnabled = false
-    submenu.addItem(nameItem)
+    let infoItem = NSMenuItem(
+      title: "mchip • v\(Self.appVersion) • \(Self.buildDateString)",
+      action: nil,
+      keyEquivalent: ""
+    )
+    infoItem.isEnabled = false
+    submenu.addItem(infoItem)
 
-    let versionItem = NSMenuItem(title: "v\(Self.appVersion)", action: nil, keyEquivalent: "")
-    versionItem.isEnabled = false
-    submenu.addItem(versionItem)
-
-    let dateItem = NSMenuItem(title: Self.buildDateString, action: nil, keyEquivalent: "")
-    dateItem.isEnabled = false
-    submenu.addItem(dateItem)
+    let feedbackItem = NSMenuItem(
+      title: "Leave feedback on GitHub issues",
+      action: nil,
+      keyEquivalent: ""
+    )
+    feedbackItem.isEnabled = false
+    submenu.addItem(feedbackItem)
 
     let github = NSMenuItem(title: "GitHub", action: #selector(openRepository), keyEquivalent: "")
     github.target = self
