@@ -4,7 +4,7 @@ set -euo pipefail
 VERSION="${1:?usage: build-release.sh <version>}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 BUILD_DIR="$ROOT/build"
-ARCHIVE="$BUILD_DIR/Chipbar.xcarchive"
+ARCHIVE="$BUILD_DIR/mchip.xcarchive"
 EXPORT_DIR="$BUILD_DIR/export"
 ZIP="$BUILD_DIR/mchip-$VERSION.zip"
 
@@ -12,8 +12,8 @@ rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 
 xcodebuild \
-  -project "$ROOT/Chipbar.xcodeproj" \
-  -scheme Chipbar \
+  -project "$ROOT/mchip.xcodeproj" \
+  -scheme mchip \
   -configuration Release \
   -destination 'generic/platform=macOS' \
   -archivePath "$ARCHIVE" \
@@ -31,7 +31,7 @@ xcodebuild \
   -exportOptionsPlist "$ROOT/scripts/ExportOptions.plist"
 
 APP="$EXPORT_DIR/mchip-v$VERSION.app"
-mv "$EXPORT_DIR/Chipbar.app" "$APP"
+mv "$EXPORT_DIR/mchip.app" "$APP"
 codesign --force --deep --sign - "$APP"
 
 ditto -c -k --keepParent "$APP" "$ZIP"

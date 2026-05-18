@@ -19,8 +19,8 @@ jobs:
       - name: Tests
         run: |
           xcodebuild test \
-            -project Chipbar.xcodeproj \
-            -scheme Chipbar \
+            -project mchip.xcodeproj \
+            -scheme mchip \
             -destination 'platform=macOS,arch=arm64'
 
       - name: Compute version
