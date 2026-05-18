@@ -33,7 +33,7 @@ jobs:
         id: build
         run: |
           ./scripts/build-release.sh "${{ steps.ver.outputs.version }}"
-          SHA=$(shasum -a 256 "build/Chipbar-${{ steps.ver.outputs.version }}.zip" | awk '{print $1}')
+          SHA=$(shasum -a 256 "build/mchip-${{ steps.ver.outputs.version }}.zip" | awk '{print $1}')
           echo "sha=$SHA" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub release
@@ -41,7 +41,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create "${{ github.ref_name }}" \
-            "build/Chipbar-${{ steps.ver.outputs.version }}.zip" \
+            "build/mchip-${{ steps.ver.outputs.version }}.zip" \
             --generate-notes \
             --title "mchip ${{ github.ref_name }}"
 

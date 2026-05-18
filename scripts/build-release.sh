@@ -6,7 +6,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 BUILD_DIR="$ROOT/build"
 ARCHIVE="$BUILD_DIR/Chipbar.xcarchive"
 EXPORT_DIR="$BUILD_DIR/export"
-ZIP="$BUILD_DIR/Chipbar-$VERSION.zip"
+ZIP="$BUILD_DIR/mchip-$VERSION.zip"
 
 rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
