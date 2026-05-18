@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0BBA208A785FD2921184C49C /* CPUReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75574D91D270A8E018D7F3DC /* CPUReaderTests.swift */; };
 		2192042E02B241F02558B13D /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E47D0F5BAB7F4D56771EF /* SnapshotTests.swift */; };
+		5903C86874D2DA76AF62DC1D /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0779DF3B92B7DDE66FB9E4D5 /* AppIcon.icns */; };
 		59B41424DAAC222DD83021BB /* CPUReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ED668286A6A244BC0307 /* CPUReader.swift */; };
 		5C953BF20BC0AEE0360417FB /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808C3209B430586A9C9C820D /* Preferences.swift */; };
 		746A1752DFEB60F429599305 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE7BD7897FA26ABA6B16FC /* StatusBarView.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0779DF3B92B7DDE66FB9E4D5 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		2E24F0F3DD562D451FD2E854 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
 		3EC1D0B48CC9EADB2D8F1F4C /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		5D1252F0ADB97518E28F73D9 /* MetricsSamplerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsSamplerTests.swift; sourceTree = "<group>"; };
@@ -76,10 +78,19 @@
 				C2FAF793EAB08C1E8F95FC3B /* App */,
 				72DF4329710C2E439918690A /* Metrics */,
 				E9FEE0D156CC0FF8133F1E1E /* Preferences */,
+				644147726195E0CD2FAA0962 /* Resources */,
 				D35191B7FB1E54D7D9350DAD /* UI */,
 			);
 			name = Chipbar;
 			path = Sources/Chipbar;
+			sourceTree = "<group>";
+		};
+		644147726195E0CD2FAA0962 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0779DF3B92B7DDE66FB9E4D5 /* AppIcon.icns */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		6D377B97AC98B673787CBAC5 /* Products */ = {
@@ -164,6 +175,7 @@
 			buildConfigurationList = 608E8B188F5779FB70850C63 /* Build configuration list for PBXNativeTarget "Chipbar" */;
 			buildPhases = (
 				B3BEF194AEBED78F4B9AB33B /* Sources */,
+				26D38E7B08F8938A5A5DE5A5 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -213,6 +225,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		26D38E7B08F8938A5A5DE5A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5903C86874D2DA76AF62DC1D /* AppIcon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B3BEF194AEBED78F4B9AB33B /* Sources */ = {
