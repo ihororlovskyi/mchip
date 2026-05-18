@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		084AAC6BAB422698EBB92EBD /* RAMReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FE1337BE6C2CED0F09BED /* RAMReaderTests.swift */; };
 		0C7227865E13F2BC56F9AA27 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431468B43527997C3B085A73 /* main.swift */; };
+		2D97830CA2C2CCD6957F0086 /* StatusBarViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD818B75F37D8BE5C8704EC4 /* StatusBarViewSnapshotTests.swift */; };
+		30911CD71055AFD30E4C769A /* SnapshotHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85843FE0EA9262D85DAF0CB /* SnapshotHelpers.swift */; };
 		482A9290127E8364D7410B27 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4497F2C625DC592B22FD43A3 /* StatusBarController.swift */; };
 		4B789483E77B8F69421215AE /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBB9D01AC86C872E99A29E /* Preferences.swift */; };
 		59B6E4EBC6005DCA641F9050 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6E832450FD3B44D2E0FF5FE0 /* AppIcon.icns */; };
@@ -47,10 +49,12 @@
 		6E832450FD3B44D2E0FF5FE0 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		9D2AF9E3571B29085F5088AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A49FE1337BE6C2CED0F09BED /* RAMReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReaderTests.swift; sourceTree = "<group>"; };
+		A85843FE0EA9262D85DAF0CB /* SnapshotHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotHelpers.swift; sourceTree = "<group>"; };
 		AA2FE01A56E529EA4BBE7251 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
 		ABEC0F4973762DD09B5D9BF4 /* MetricsSamplerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsSamplerTests.swift; sourceTree = "<group>"; };
 		BB8D90305D4F3BE2135EA167 /* CPUReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUReaderTests.swift; sourceTree = "<group>"; };
 		D1D9EA9D6D25E724B264F3A9 /* CPUReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUReader.swift; sourceTree = "<group>"; };
+		DD818B75F37D8BE5C8704EC4 /* StatusBarViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarViewSnapshotTests.swift; sourceTree = "<group>"; };
 		DE0652EAA368D7E07980774A /* mchip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mchip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36631428294A635F6252860 /* MetricsSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsSampler.swift; sourceTree = "<group>"; };
 		E886DEA59A4E2EBFB8FEF04F /* mchipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mchipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,7 +91,9 @@
 				ABEC0F4973762DD09B5D9BF4 /* MetricsSamplerTests.swift */,
 				AA2FE01A56E529EA4BBE7251 /* PreferencesTests.swift */,
 				A49FE1337BE6C2CED0F09BED /* RAMReaderTests.swift */,
+				A85843FE0EA9262D85DAF0CB /* SnapshotHelpers.swift */,
 				0EAA500E574ABB038943DFCF /* SnapshotTests.swift */,
+				DD818B75F37D8BE5C8704EC4 /* StatusBarViewSnapshotTests.swift */,
 			);
 			name = mchipTests;
 			path = Tests/mchipTests;
@@ -247,7 +253,9 @@
 				FD11942045EBFECB22F5106C /* MetricsSamplerTests.swift in Sources */,
 				AC58247347A39DEF8D3DD5D2 /* PreferencesTests.swift in Sources */,
 				084AAC6BAB422698EBB92EBD /* RAMReaderTests.swift in Sources */,
+				30911CD71055AFD30E4C769A /* SnapshotHelpers.swift in Sources */,
 				8C595917B0B22CEAA0F3770E /* SnapshotTests.swift in Sources */,
+				2D97830CA2C2CCD6957F0086 /* StatusBarViewSnapshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
