@@ -22,7 +22,7 @@ final class StatusBarController {
     let initialWidth = StatusBarView.width(for: preferences.metricVisibility)
     self.statusItem = NSStatusBar.system.statusItem(withLength: initialWidth)
     self.view = StatusBarView(frame: NSRect(x: 0, y: 0, width: initialWidth, height: NSStatusBar.system.thickness))
-    self.menu = NSMenu(title: "mchip")
+    self.menu = NSMenu(title: "Chipbar")
 
     statusItem.button?.addSubview(view)
     view.frame = statusItem.button?.bounds ?? view.frame
@@ -96,7 +96,7 @@ final class StatusBarController {
     menu.addItem(about)
 
     menu.addItem(.separator())
-    let quit = NSMenuItem(title: "Quit mchip", action: #selector(quitApp), keyEquivalent: "q")
+    let quit = NSMenuItem(title: "Quit Chipbar", action: #selector(quitApp), keyEquivalent: "q")
     quit.target = self
     menu.addItem(quit)
   }
@@ -105,7 +105,7 @@ final class StatusBarController {
     let submenu = NSMenu(title: "About")
 
     let infoItem = NSMenuItem(
-      title: "mchip • v\(Self.appVersion) • \(Self.buildDateString)",
+      title: "Chipbar • v\(Self.appVersion) • \(Self.buildDateString)",
       action: nil,
       keyEquivalent: ""
     )

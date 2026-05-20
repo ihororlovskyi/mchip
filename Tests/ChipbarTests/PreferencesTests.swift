@@ -1,6 +1,6 @@
 import XCTest
 import Combine
-@testable import mchip
+@testable import Chipbar
 
 final class PreferencesTests: XCTestCase {
   private var defaults: UserDefaults!

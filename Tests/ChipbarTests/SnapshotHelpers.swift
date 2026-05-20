@@ -1,6 +1,6 @@
 import AppKit
 import XCTest
-@testable import mchip
+@testable import Chipbar
 
 enum SnapshotHelpers {
   static let scale: CGFloat = 2
@@ -60,7 +60,7 @@ enum SnapshotHelpers {
 
     let dir = snapshotsDir(for: file)
     let referenceURL = dir.appendingPathComponent("\(name).png")
-    let recordMode = ProcessInfo.processInfo.environment["MCHIP_SNAPSHOT_RECORD"] == "1"
+    let recordMode = ProcessInfo.processInfo.environment["CHIPBAR_SNAPSHOT_RECORD"] == "1"
     let referenceExists = FileManager.default.fileExists(atPath: referenceURL.path)
 
     if recordMode || !referenceExists {
@@ -72,7 +72,7 @@ enum SnapshotHelpers {
         return
       }
       XCTFail(
-        "recorded reference \(name).png at \(referenceURL.path); re-run without MCHIP_SNAPSHOT_RECORD to verify",
+        "recorded reference \(name).png at \(referenceURL.path); re-run without CHIPBAR_SNAPSHOT_RECORD to verify",
         file: file,
         line: line
       )
@@ -88,7 +88,7 @@ enum SnapshotHelpers {
       let actualURL = dir.appendingPathComponent("\(name)-actual.png")
       try? actualData.write(to: actualURL)
       XCTFail(
-        "snapshot mismatch for \(name); actual saved at \(actualURL.path). Re-record with MCHIP_SNAPSHOT_RECORD=1 if change is intended.",
+        "snapshot mismatch for \(name); actual saved at \(actualURL.path). Re-record with CHIPBAR_SNAPSHOT_RECORD=1 if change is intended.",
         file: file,
         line: line
       )

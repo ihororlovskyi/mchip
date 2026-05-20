@@ -1,5 +1,5 @@
 import XCTest
-@testable import mchip
+@testable import Chipbar
 
 final class MetricsSamplerTests: XCTestCase {
   func test_emitsSnapshotsAtConfiguredInterval() async throws {

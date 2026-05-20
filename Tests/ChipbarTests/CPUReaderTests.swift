@@ -1,5 +1,5 @@
 import XCTest
-@testable import mchip
+@testable import Chipbar
 
 final class CPUReaderTests: XCTestCase {
   func test_firstSampleReturnsZero() {

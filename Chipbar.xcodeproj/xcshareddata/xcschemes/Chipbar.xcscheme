@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ECA66603EF43A6F7329B6BE9"
-               BuildableName = "mchip.app"
-               BlueprintName = "mchip"
-               ReferencedContainer = "container:mchip.xcodeproj">
+               BlueprintIdentifier = "F3F11D17F47F3B483BD91253"
+               BuildableName = "Chipbar.app"
+               BlueprintName = "Chipbar"
+               ReferencedContainer = "container:Chipbar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECA66603EF43A6F7329B6BE9"
-            BuildableName = "mchip.app"
-            BlueprintName = "mchip"
-            ReferencedContainer = "container:mchip.xcodeproj">
+            BlueprintIdentifier = "F3F11D17F47F3B483BD91253"
+            BuildableName = "Chipbar.app"
+            BlueprintName = "Chipbar"
+            ReferencedContainer = "container:Chipbar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -44,10 +44,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8EA9EFDFEC696D3DDB3783C5"
-               BuildableName = "mchipTests.xctest"
-               BlueprintName = "mchipTests"
-               ReferencedContainer = "container:mchip.xcodeproj">
+               BlueprintIdentifier = "9965E447A1998558BBC7DB7D"
+               BuildableName = "ChipbarTests.xctest"
+               BlueprintName = "ChipbarTests"
+               ReferencedContainer = "container:Chipbar.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,10 +68,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECA66603EF43A6F7329B6BE9"
-            BuildableName = "mchip.app"
-            BlueprintName = "mchip"
-            ReferencedContainer = "container:mchip.xcodeproj">
+            BlueprintIdentifier = "F3F11D17F47F3B483BD91253"
+            BuildableName = "Chipbar.app"
+            BlueprintName = "Chipbar"
+            ReferencedContainer = "container:Chipbar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -85,10 +85,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECA66603EF43A6F7329B6BE9"
-            BuildableName = "mchip.app"
-            BlueprintName = "mchip"
-            ReferencedContainer = "container:mchip.xcodeproj">
+            BlueprintIdentifier = "F3F11D17F47F3B483BD91253"
+            BuildableName = "Chipbar.app"
+            BlueprintName = "Chipbar"
+            ReferencedContainer = "container:Chipbar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

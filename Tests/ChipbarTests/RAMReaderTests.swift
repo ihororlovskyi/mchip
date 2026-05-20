@@ -1,5 +1,5 @@
 import XCTest
-@testable import mchip
+@testable import Chipbar
 
 final class RAMReaderTests: XCTestCase {
   func test_usedRatioFormula() {

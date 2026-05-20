@@ -1,5 +1,5 @@
 import XCTest
-@testable import mchip
+@testable import Chipbar
 
 final class SnapshotTests: XCTestCase {
   func test_zeroSnapshotHasAllZeroValues() {

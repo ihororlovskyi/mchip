@@ -12,9 +12,9 @@ set -euo pipefail
 
 VERSION="${1:?usage: $0 <version>   # e.g. 0.1.3}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-APP_NAME="mchip-v${VERSION}.app"
+APP_NAME="Chipbar.app"
 APP_PATH="/Applications/${APP_NAME}"
-ZIP="${ROOT}/build/mchip-${VERSION}.zip"
+ZIP="${ROOT}/build/Chipbar-${VERSION}.zip"
 UNZIP_DIR="${ROOT}/build/unzip"
 LSR=/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister
 
@@ -22,12 +22,14 @@ echo "→ Building release ${VERSION}"
 rm -rf "${ROOT}/build"
 "${ROOT}/scripts/build-release.sh" "${VERSION}"
 
-echo "→ Stopping running mchip"
+echo "→ Stopping running Chipbar"
+pkill -x Chipbar || true
 pkill -x mchip || true
 
-echo "→ Uninstalling previous mchip (cask + /Applications)"
+echo "→ Uninstalling previous Chipbar / mchip (cask + /Applications)"
+brew uninstall --cask chipbar 2>/dev/null || true
 brew uninstall --cask mchip 2>/dev/null || true
-rm -rf /Applications/mchip.app /Applications/mchip-v*.app
+rm -rf /Applications/Chipbar.app /Applications/mchip.app /Applications/mchip-v*.app
 
 echo "→ Clearing macOS icon cache (sudo)"
 sudo rm -rf /Library/Caches/com.apple.iconservices.store
@@ -49,6 +51,7 @@ open "${APP_PATH}"
 echo
 echo "✓ Done."
 echo "  Verify visually:"
-echo "    - Finder: open /Applications"
-echo "    - menu-bar item: click the icon, confirm 'About' shows  mchip • v${VERSION} • <today>"
+echo "    - Finder: open /Applications  (icon should be Chipbar.app, mono-light squircle)"
+echo "    - menu-bar item: click the icon, confirm 'About' shows  Chipbar • v${VERSION} • <today>"
 echo "    - About submenu: only one clickable row labelled 'GitHub' (no 'Leave feedback')"
+echo "    - Quit row: 'Quit Chipbar'"

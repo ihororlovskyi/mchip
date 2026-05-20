@@ -21,14 +21,14 @@ once shipped on a tagged release.
   `try SMAppService.mainApp.register()` or `.unregister()`. On enable,
   defensively `try? SMAppService.mainApp.unregister()` first when status
   is already `.enabled` to avoid stale-registration errors. Place the
-  helper either inline in `Sources/mchip/UI/StatusBarController.swift`
-  or as its own file under `Sources/mchip/Preferences/` if it grows
+  helper either inline in `Sources/Chipbar/UI/StatusBarController.swift`
+  or as its own file under `Sources/Chipbar/Preferences/` if it grows
   beyond ~20 lines. Surface as a new `Launch at Login` menu item under
   the About area in `StatusBarController.buildMenu`, with `.on`/`.off`
   state mirroring the service status and toggled on click. No new
   entitlements required. `SMAppService` only behaves reliably when the
   app lives in `/Applications`, so the manual smoke checklist must add
-  a step that drags the built `mchip-v<version>.app` into
+  a step that drags the built `Chipbar.app` into
   `/Applications` before exercising the toggle. Do not add a
   UserDefaults key for this — the system service is the source of
   truth; reading `SMAppService.mainApp.status` on each menu open is
@@ -36,7 +36,7 @@ once shipped on a tagged release.
 - Additional metrics: disk, network, temperature, energy.
 - **Lightweight graphs / short-term history per metric.** Add a small
   ring-buffer type (`MetricHistory` or similar) under
-  `Sources/mchip/Metrics/`: fixed capacity (default 60 slots — one
+  `Sources/Chipbar/Metrics/`: fixed capacity (default 60 slots — one
   minute at 1 Hz; scale capacity with refresh interval so the visible
   window stays ≈ 60 s across cadences), `Float?` storage, O(1)
   `add(_:)` with `index = (index + 1) % capacity`, and an internal
@@ -44,10 +44,10 @@ once shipped on a tagged release.
   callers never scan the buffer. Expose
   `snapshot() -> [Float?]` returning samples in insertion order for
   rendering. Own one instance per metric inside
-  `Sources/mchip/Metrics/MetricsSampler.swift` and push each reading
+  `Sources/Chipbar/Metrics/MetricsSampler.swift` and push each reading
   immediately after the existing `Snapshot` publish; the live readers
   (`CPUReader`, `GPUReader`, `RAMReader`) stay untouched. Render in
-  pure AppKit by extending `Sources/mchip/UI/StatusBarView.swift` —
+  pure AppKit by extending `Sources/Chipbar/UI/StatusBarView.swift` —
   lay a faint sparkline behind the percentage text per cell inside the
   existing `draw(_:)`. Build the path with `NSBezierPath`: start at
   baseline-left, iterate samples mapping `(i, value)` to `(x, y)` with
@@ -65,7 +65,7 @@ once shipped on a tagged release.
   first minute after launch. Tests: cover `MetricHistory`
   deterministically — insert past capacity, snapshot ordering, and
   aggregate correctness after eviction — under
-  `Tests/mchipTests/`. The AppKit draw path is now covered by the
+  `Tests/ChipbarTests/`. The AppKit draw path is now covered by the
   `StatusBarView` snapshot tests shipped in v0.1.3.
 - Threshold alerts (notification when a metric crosses a configurable
   ceiling, e.g. CPU > 90% for N seconds).
