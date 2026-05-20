@@ -17,6 +17,8 @@ jobs:
           fetch-tags: true
 
       - name: Tests
+        env:
+          TEST_RUNNER_CI: "true"
         run: |
           xcodebuild test \
             -project Chipbar.xcodeproj \
