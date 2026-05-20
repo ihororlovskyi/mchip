@@ -11,6 +11,23 @@ _No unreleased changes._
 
 See [ROADMAP.md](ROADMAP.md) for planned work and explicit non-goals.
 
+## [0.1.3] — 2026-05-20
+
+### Added
+
+- Real `.icns` app icon bundled at `Sources/mchip/Resources/AppIcon.icns` (Mono Light variant: silver squircle, dark chip with `Chipbar` wordmark, monochrome CPU / GPU / RAM traces). Wired via `CFBundleIconFile` in `Info.plist` and rendered at every macOS size (16 / 32 / 128 / 256 / 512, 1x + 2x) so Finder / Dock / Cmd-Tab / Launchpad / "Open With" / Spotlight / About panel all show real artwork instead of the generic placeholder. The menu-bar item stays text-only — by design. README banner uses the animated hero SVG (`assets/img/chipbar-hero-animated.svg`).
+- Refresh-interval picker exposes four cadences: `0.5 sec`, `1 sec` (default), `2 sec`, `5 sec`. UserDefaults key bumped from `chipbar.refreshIntervalSeconds` (`Int`) to `chipbar.refreshIntervalSecondsV2` (`Double`); the old value is read once and migrated on first launch so v0.1.2 users keep their cadence. Submenu title renamed `Update every` → `Interval`.
+- Pixel-level `StatusBarView` snapshot tests under `Tests/mchipTests/__Snapshots__/` covering 1-, 2-, 3-cell layouts × representative CPU / GPU / RAM percentages. Replaces the visual portion of the manual smoke checklist; AppKit views are drawn offscreen into `NSImage` and byte-compared against reference PNGs.
+
+### Changed
+
+- GitHub repository renamed `ihororlovskyi/mchip` → `ihororlovskyi/chipbar`. In-tree URL references updated: `StatusBarController.repositoryURL` (`About → GitHub` row) and `CHANGELOG.md` compare/release links now point at the canonical new slug. GitHub still serves the old URL via 301 redirect.
+- Internal `Chipbar` naming dropped entirely. Xcode target, scheme, source directory, archive path, and binary inside the bundle (`Contents/MacOS/mchip`) are now all `mchip`. `Chipbar.xcodeproj` regenerated as `mchip.xcodeproj` via `xcodegen generate`. `CFBundleIdentifier` stays `com.ihororlovskyi.chipbar` to preserve LaunchServices identity and granted permissions; UserDefaults keys (`chipbar.show.*`, `chipbar.refreshIntervalSecondsV2`) stay so v0.1.2 users keep their settings. The Homebrew cask is still `mchip`.
+- Release zip on GitHub renamed `Chipbar-<version>.zip` → `mchip-<version>.zip` so the release-assets list, cask `url` stanza, and manual-download UX all consistently say `mchip`. The cask `url` in `ihororlovskyi/homebrew-tap` is updated in the same release cycle.
+- `actions/checkout` bumped from `v4` to `v5` in `.github/workflows/release.yml` and `ci.yml`, ahead of GitHub's Node.js 20 deprecation.
+- About submenu collapsed to a single inline info row `mchip • v<version> • <dd MMM yy>` above the clickable `GitHub` row. No "Leave feedback" CTA; the `GitHub` row is the only link out.
+- `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` bumped to `0.1.3`.
+
 ## [0.1.2] — 2026-05-18
 
 ### Changed
@@ -60,7 +77,8 @@ Initial release.
 - `scripts/update-cask.sh` — bumps `version` / `sha256` in the tap cask.
 - Homebrew tap at [`ihororlovskyi/homebrew-tap`](https://github.com/ihororlovskyi/homebrew-tap), installable via `brew install --cask chipbar`.
 
-[Unreleased]: https://github.com/ihororlovskyi/mchip/compare/v0.1.2...HEAD
-[0.1.2]: https://github.com/ihororlovskyi/mchip/compare/v0.1.1...v0.1.2
-[0.1.1]: https://github.com/ihororlovskyi/mchip/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/ihororlovskyi/mchip/releases/tag/v0.1.0
+[Unreleased]: https://github.com/ihororlovskyi/chipbar/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/ihororlovskyi/chipbar/compare/v0.1.2...v0.1.3
+[0.1.2]: https://github.com/ihororlovskyi/chipbar/compare/v0.1.1...v0.1.2
+[0.1.1]: https://github.com/ihororlovskyi/chipbar/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/ihororlovskyi/chipbar/releases/tag/v0.1.0

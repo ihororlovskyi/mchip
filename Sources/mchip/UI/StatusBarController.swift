@@ -3,7 +3,7 @@ import Combine
 
 @MainActor
 final class StatusBarController {
-  static let repositoryURL = URL(string: "https://github.com/ihororlovskyi/mchip")!
+  static let repositoryURL = URL(string: "https://github.com/ihororlovskyi/chipbar")!
 
   private let statusItem: NSStatusItem
   private let view: StatusBarView
@@ -111,14 +111,6 @@ final class StatusBarController {
     )
     infoItem.isEnabled = false
     submenu.addItem(infoItem)
-
-    let feedbackItem = NSMenuItem(
-      title: "Leave feedback on GitHub issues",
-      action: nil,
-      keyEquivalent: ""
-    )
-    feedbackItem.isEnabled = false
-    submenu.addItem(feedbackItem)
 
     let github = NSMenuItem(title: "GitHub", action: #selector(openRepository), keyEquivalent: "")
     github.target = self

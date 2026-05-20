@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="assets/img/mchip-logo.jpg" alt="mchip" width="640">
+  <img src="assets/img/chipbar-hero-animated.svg" alt="Chipbar — three signals, one chip, live in your menu bar" width="880">
 </p>
 
-# mchip
+# Chipbar
 
-mchip - is a tiny macos monitor of apple silicon chip process
+Chipbar - is a tiny macos monitor of apple silicon chip process
 
 ## Design
 ```md
